@@ -1,4 +1,4 @@
-﻿namespace Backend;
+﻿namespace Projekt.Libs.TrieClass;
 
 public class Node
 {

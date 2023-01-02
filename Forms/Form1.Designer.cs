@@ -46,6 +46,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -189,7 +192,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(240, 239);
+            this.label1.Location = new System.Drawing.Point(254, 171);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(195, 15);
             this.label1.TabIndex = 14;
@@ -198,7 +201,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(240, 267);
+            this.label2.Location = new System.Drawing.Point(254, 199);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(186, 15);
             this.label2.TabIndex = 15;
@@ -207,7 +210,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(240, 297);
+            this.label3.Location = new System.Drawing.Point(254, 229);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(181, 75);
             this.label3.TabIndex = 16;
@@ -217,18 +220,52 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(240, 386);
+            this.label4.Location = new System.Drawing.Point(254, 318);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(202, 60);
             this.label4.TabIndex = 17;
             this.label4.Text = "Aby wybrać element z listy \r\nnie używając klawiszy nawigacyjnych\r\nnależy wybrać o" +
     "dpowiedni element\r\nz listy a następnie wcisnąć 0\r\n";
             // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(258, 439);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown1.TabIndex = 18;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(254, 391);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(199, 45);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Zasięg szukania\r\n(im większy tym więcej podpowiedzi\r\nbędzie się wyświetlać)\r\n";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(461, 550);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -250,6 +287,7 @@
             this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,5 +313,7 @@
         private Label label2;
         private Label label3;
         private Label label4;
+        private NumericUpDown numericUpDown1;
+        private Label label5;
     }
 }

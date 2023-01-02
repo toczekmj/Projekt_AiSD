@@ -1,4 +1,4 @@
-﻿namespace Backend;
+﻿namespace Projekt.Libs.TrieClass;
 
 
 
@@ -41,9 +41,6 @@ public class Trie
     {
         var current = root;
         var suggestions = new List<string>();
-        //var flag = false;
-
-
 
         foreach (var c in input)
         {
@@ -56,22 +53,6 @@ public class Trie
                 return suggestions;
             }
         }
-
-        //Parallel.ForEach(input, (c, state) =>
-        //{
-        //    if (current.Children.ContainsKey(c))
-        //    {
-        //        current = current.Children[c];
-        //    }
-        //    else
-        //    {
-        //        flag = true;
-        //        state.Break();   
-        //    }
-        //});
-
-        //if (flag)
-        //    return suggestions;
         
         FindWords(current, suggestions, Limit, input, true);
 
