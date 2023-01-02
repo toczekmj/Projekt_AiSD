@@ -30,6 +30,7 @@ namespace Projekt
             _trie = new();
             _dict = new();
             OpenDict();
+            _trie.Limit = 10;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -69,10 +70,10 @@ namespace Projekt
             var i = GetLastWord();
             bool containsOnlyNumbers = System.Text.RegularExpressions.Regex.IsMatch(i, @"^[0-9]+$");
 
-            if(!containsOnlyNumbers)
+            if (!containsOnlyNumbers)
                 i = ConvertWordToNumbers(i);
 
-            if (string.IsNullOrEmpty(textBox1.Text) || textBox1.Text[textBox1.TextLength-1] != ' ')
+            if (string.IsNullOrEmpty(textBox1.Text) || textBox1.Text[textBox1.TextLength - 1] != ' ')
                 words = GetAllCombinations(i);
 
             lastWord = i;
@@ -99,7 +100,7 @@ namespace Projekt
                 listBox1.Items.Add(item);
             }
 
-            
+
 
             _selectedItem = 0;
             if (listBox1.Items.Count > 0)
@@ -230,7 +231,7 @@ namespace Projekt
 
         private void button11_Click(object sender, EventArgs e)
         {
-            if(listBox1.Items.Count > 0)
+            if (listBox1.Items.Count > 0)
             {
                 var word = listBox1.SelectedItem.ToString();
                 ReplaceLastWord(word);
@@ -264,9 +265,15 @@ namespace Projekt
             if (_selectedItem < listBox1.Items.Count - 1)
             {
                 _selectedItem++;
-                listBox1.SelectedIndex = _selectedItem;
-                var word = listBox1.SelectedItem.ToString();
-                ReplaceLastWord(word);
+                if (_selectedItem < 0)
+                    _selectedItem = 0;
+                if (listBox1.Items.Count > 0)
+                {
+                    listBox1.SelectedIndex = _selectedItem;
+                    var word = listBox1.SelectedItem.ToString();
+                    ReplaceLastWord(word);
+                }
+
             }
             _update = true;
         }

@@ -41,10 +41,11 @@ public class Trie
     {
         var current = root;
         var suggestions = new List<string>();
-        var flag = false;
+        //var flag = false;
 
 
-        Parallel.ForEach(input, (c, state) =>
+
+        foreach (var c in input)
         {
             if (current.Children.ContainsKey(c))
             {
@@ -52,13 +53,25 @@ public class Trie
             }
             else
             {
-                flag = true;
-                state.Break();   
+                return suggestions;
             }
-        });
+        }
 
-        if (flag)
-            return suggestions;
+        //Parallel.ForEach(input, (c, state) =>
+        //{
+        //    if (current.Children.ContainsKey(c))
+        //    {
+        //        current = current.Children[c];
+        //    }
+        //    else
+        //    {
+        //        flag = true;
+        //        state.Break();   
+        //    }
+        //});
+
+        //if (flag)
+        //    return suggestions;
         
         FindWords(current, suggestions, Limit, input, true);
 
