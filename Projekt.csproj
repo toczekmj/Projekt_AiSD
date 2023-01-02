@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Folder Include="Libs\Trie\" />
+    <Folder Include="Dicts\" />
   </ItemGroup>
 
 </Project>
