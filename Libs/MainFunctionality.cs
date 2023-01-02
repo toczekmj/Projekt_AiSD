@@ -23,6 +23,7 @@ namespace Projekt.Libs
                     var fileStream = openFileDialog.OpenFile();
 
                     using StreamReader reader = new StreamReader(fileStream);
+                    MessageBox.Show("Czytam plik. Jezeli jest on bardzo dlugi (>20000 linii) moze to chwile potrwac.", "Otwieram slownik.", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     fileContent = reader.ReadToEnd();
                 }
             }

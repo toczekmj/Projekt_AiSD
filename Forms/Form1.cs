@@ -38,7 +38,7 @@ namespace Projekt
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            MF.TextChanged(ref lastWord, _update, ref _selectedItem, mappedKeys, textBox1,listBox1, _trie);
+            MF.TextChanged(ref lastWord, _update, ref _selectedItem, mappedKeys, textBox1, listBox1, _trie);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -134,6 +134,12 @@ namespace Projekt
 
             }
             _update = true;
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            if (_trie is not null)
+                _trie.Limit = Convert.ToInt32(numericUpDown1.Value);
         }
 
     }
