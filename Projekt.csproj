@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Trie\" />
+    <Folder Include="Libs\Trie\" />
   </ItemGroup>
 
 </Project>
