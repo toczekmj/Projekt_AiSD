@@ -7,11 +7,10 @@ namespace Projekt
     public partial class Form1 : Form
     {
         private readonly Trie? _trie;
-        private List<string> _dict;
         private int _selectedItem = 0;
-        private string lastWord = "";
+        private string _lastWord = "";
         private bool _update = true;
-        private Dictionary<int, string> mappedKeys = new()
+        private readonly Dictionary<int, string> _mappedKeys = new()
         {
             {2, "abc"},
             {3, "def"},
@@ -26,25 +25,26 @@ namespace Projekt
         public Form1()
         {
             InitializeComponent();
-            _trie = new();
-            _dict = new();
-            MF.OpenDict(_dict, _trie);
-            _trie.Limit = 10;
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            _trie = new Trie
+            {
+                Limit = 10
+            };
+            MF.OpenDict(_trie);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            MinimizeBox = false;
         }
 
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            MF.TextChanged(ref lastWord, _update, ref _selectedItem, mappedKeys, textBox1, listBox1, _trie);
+            MF.TextChanged(ref _lastWord, _update, ref _selectedItem, _mappedKeys, textBox1, listBox1, _trie);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (textBox1.TextLength > 0)
-                textBox1.Text = textBox1.Text.Substring(0, textBox1.TextLength - 1);
+                textBox1.Text = textBox1.Text[..(textBox1.TextLength - 1)];
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -112,7 +112,7 @@ namespace Projekt
             else
             {
                 _selectedItem--;
-                MF.ReplaceLastWord(lastWord, textBox1);
+                MF.ReplaceLastWord(_lastWord, textBox1);
             }
             _update = true;
         }
