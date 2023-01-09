@@ -9,7 +9,7 @@ namespace Projekt.Libs
         /// Funkcja odpowiedzialna za wczytanie słownika wskazanego przez użytkownika
         /// </summary>
         /// <param name="trie">wskaźnik na korzeń drzewa do któego będą załadowane </param>
-        public static void OpenDict(Trie trie)
+        public static async void OpenDict(Trie trie, Form1 form)
         {
             var fileContent = string.Empty;
 
@@ -26,8 +26,16 @@ namespace Projekt.Libs
                     var fileStream = openFileDialog.OpenFile();
 
                     using var reader = new StreamReader(fileStream);
-                    MessageBox.Show(@"Czytam plik. Jezeli jest on bardzo dlugi (>20000 linii) moze to chwile potrwac.", "Otwieram slownik.", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                    fileContent = reader.ReadToEnd();
+                    form.Enabled = false;
+                    form.Text = @"No dictionary loaded.";
+                    var dialogThread = new Thread(() =>
+                    {
+                        MessageBox.Show(@"Czytam plik. Jezeli jest on bardzo dlugi (>20000 linii) moze to chwile potrwac.", "Otwieram slownik.", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    });
+                    dialogThread.Start();
+                    fileContent = await reader.ReadToEndAsync();
+                    form.Enabled = true;
+                    form.Text = $@"{Path.GetFileName(filePath)} dictionary loaded.";
                 }
             }
             List<string> dict = fileContent.Split('\n').ToList();

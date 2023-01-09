@@ -29,7 +29,7 @@ namespace Projekt
             {
                 Limit = 10
             };
-            MF.OpenDict(_trie);
+            MF.OpenDict(_trie, this);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MinimizeBox = false;
