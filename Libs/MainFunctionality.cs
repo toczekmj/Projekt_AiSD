@@ -9,7 +9,7 @@ namespace Projekt.Libs
         /// Funkcja odpowiedzialna za wczytanie słownika wskazanego przez użytkownika
         /// </summary>
         /// <param name="trie">wskaźnik na korzeń drzewa do któego będą załadowane </param>
-        public static async void OpenDict(Trie trie, Form1 form)
+        public static async void OpenDict(Trie.Trie trie, Form1 form)
         {
             var fileContent = string.Empty;
 
@@ -54,7 +54,7 @@ namespace Projekt.Libs
         /// <param name="listBox1">lista podpowiedzi</param>
         /// <param name="trie">wskaźnik do korzenia drzewa</param>
         public static void TextChanged(ref string lastWord, bool update, ref int selectedItem, Dictionary<int, string> mappedKeys,
-            TextBox textBox1, ListBox listBox1, Trie trie)
+            TextBox textBox1, ListBox listBox1, Trie.Trie trie)
         {
             //sprawdzam czy trzeba aktualizować wejście
             //na przykład w momencie gdy wybieramy inne słowo z listy podpowiedzi
@@ -97,7 +97,7 @@ namespace Projekt.Libs
 
             //czyscimy listę podpowiedzi i dodajemy do niej nowe, posortowane po długości
             listBox1.Items.Clear();
-            var temp = output.OrderBy(x => x.ToString().Length);
+           var temp = output.OrderBy(x => x.ToString().Length);
             foreach (var item in temp)
                 listBox1.Items.Add(item);
             //zaznaczny pierwszy element na liście jako domyślny

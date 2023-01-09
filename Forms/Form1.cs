@@ -1,5 +1,6 @@
 using Projekt.Libs.TrieClass;
 using System.Text;
+using Projekt.Libs.Trie;
 using MF = Projekt.Libs.MainFunctionality;
 
 namespace Projekt

@@ -1,4 +1,6 @@
-﻿namespace Projekt.Libs.TrieClass;
+﻿using Projekt.Libs.TrieClass;
+
+namespace Projekt.Libs.Trie;
 
 
 
